@@ -19,7 +19,7 @@ export default function RootLayout({
 } : Props) {
   return (
     <html lang="ko">
-      <body style={{backgroundColor: "black !important"}}>
+      <body className={`bg-black`}>
         {children}
         {modal}
         <div id="modal-root"></div>

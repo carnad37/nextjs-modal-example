@@ -1,5 +1,6 @@
 import React from 'react';
 import OMain from '@/components/OMain'
+import Middle from "@/components/Middle";
 
 interface Prop {
   children? : React.ReactNode,
@@ -8,7 +9,9 @@ interface Prop {
 
 const Page : React.FC<Prop> = ({ children, params })=>{
   return (
-    <OMain params={params}/>
+    <Middle screen={true}>
+      <OMain params={params}/>
+    </Middle>
   );
 }
 

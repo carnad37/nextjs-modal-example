@@ -6,22 +6,30 @@ import ReactDOM from "react-dom";
 
 interface Prop {
   children? : React.ReactNode,
-  isOpen? : boolean,
-  setIsOpen? : Dispatch<SetStateAction<boolean>>
+  // isOpen? : boolean,
+  // setIsOpen? : Dispatch<SetStateAction<boolean>>
 }
 
-const PortalModal : React.FC<Prop> = ({ children, setIsOpen, isOpen })=>{
+const PortalModal : React.FC<Prop> = ({
+  children
+  // , setIsOpen
+  // , isOpen
+})=>{
   const router = useRouter()
 
   const [modalEl, setModalEl] = useState<HTMLElement | null>(null)
 
+  // const modalClose = useCallback(()=>{
+  //   if (setIsOpen) {
+  //     setIsOpen(false)
+  //   } else {
+  //     router.back()
+  //   }
+  // },[setIsOpen, router])
+
   const modalClose = useCallback(()=>{
-    if (setIsOpen) {
-      setIsOpen(false)
-    } else {
-      router.back()
-    }
-  },[setIsOpen, router])
+    router.back()
+  },[router])
 
   const draw = useMemo(()=>(
     <>
@@ -41,7 +49,9 @@ const PortalModal : React.FC<Prop> = ({ children, setIsOpen, isOpen })=>{
   }, []);
 
   return (
-    modalEl && isOpen && ReactDOM.createPortal(draw, modalEl)
+    modalEl
+    // && isOpen
+    && ReactDOM.createPortal(draw, modalEl)
   );
 }
 

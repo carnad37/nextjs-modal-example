@@ -1,5 +1,6 @@
 import React from 'react';
 import ParallelModal from "@/components/ParallelModal";
+import PrintText from "@/components/PrintText";
  
 interface Prop {
   children? : React.ReactNode,
@@ -9,9 +10,7 @@ interface Prop {
 const Page : React.FC<Prop> = ({ children, params })=>{
   return (
     <ParallelModal>
-      <div className={`font-bold text-3xl`}>
-        {`클릭한 숫자는 ${params?.num}`}
-      </div>
+      <PrintText num={params?.num || ''}/>
     </ParallelModal>
 );}
  
